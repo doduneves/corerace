@@ -60,10 +60,18 @@ namespace corerace
                 string[] lapProps = lap.Split("\t");
                 string[] driverProps = lapProps[1].Split(" – ");              
 
+                Lap l = new Lap(lapProps[0],lapProps[2], lapProps[3], lapProps[4]);
                 Driver d = new Driver(driverProps[0], driverProps[1]);               
                 if(!drivers.Exists(x => x.Id == int.Parse(driverProps[0]))){
+                    d.Laps = new List<Lap>();
+                    d.Laps.Add(l);
                     drivers.Add(d);
+                }else{
+                    Driver existingDriver = drivers.First(x => x.Id == int.Parse(driverProps[0]));
+                    existingDriver.Laps.Add(l);
                 }
+
+
 
             }
 

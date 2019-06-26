@@ -4,15 +4,15 @@ namespace corerace.Models
     {
         
         public string Time { get; set; }
-        public string LapTime { get; set; }
         public int LapNumber { get; set; }
+        public string LapTime { get; set; }
         public string AvgSpeed { get; set; }
 
-        public Lap(string time, string lapTime, int lapNumber, string avgSpeed)
+        public Lap(string time, string lapNumber, string lapTime, string avgSpeed)
         {
             this.Time = time;
+            this.LapNumber = int.Parse(lapNumber);
             this.LapTime = lapTime;
-            this.LapNumber = lapNumber;
             this.AvgSpeed = avgSpeed;
         }
         
